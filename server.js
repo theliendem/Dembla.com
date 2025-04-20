@@ -2,9 +2,10 @@ const express = require('express');
 const app = express();
 const { Redis } = require('@upstash/redis');
 const redis = new Redis({
-	url: 'https://pumped-grizzly-12060.upstash.io',
-	token: 'AS8cAAIjcDExZWYwMjMwODU3MWI0NGQ1YjUzZGMxNmQwYTU0MDk1MXAxMA',
+	url: process.env.UPSTASH_REDIS_REST_URL,
+	token: process.env.UPSTASH_REDIS_REST_TOKEN,
 });
+require('dotenv').config();
 
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
